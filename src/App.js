@@ -13,6 +13,7 @@ import { useDispatch } from "react-redux/es/exports";
 import { setCurrentUser } from "./store/user/user.action";
 import { getCategoriesAndDocuments } from "./utils/firebase/firebase.utils";
 import { CATEGORIES_ACTION_TYPE } from "./store/categories/categories.type";
+import { setCategories } from "./store/categories/categories.action";
 
 function App() {
   const dispatch = useDispatch();
@@ -28,12 +29,9 @@ function App() {
   }, []);
   useEffect(() => {
     const getCategoriesMap = async () => {
-      const categoryMap = await getCategoriesAndDocuments();
-      dispatch({
-        type: CATEGORIES_ACTION_TYPE.SET_CATEGORIES,
-        payload: categoryMap,
-      });
-      //console.log(categoriesMap)
+      const categories = await getCategoriesAndDocuments();
+      dispatch(setCategories(categories));
+      //console.log(categories);
     };
     return getCategoriesMap;
   }, []);

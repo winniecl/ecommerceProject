@@ -9,15 +9,16 @@ import {
 import { signOutUser } from "../../../utils/firebase/firebase.utils";
 import CartIcon from "../../cart-icon/cart-icon.component";
 import CartDropdown from "../../cart-dropdown/cart-dropdown.component";
-import { CartConext } from "../../../contexts/cart.context";
+//import { CartConext } from "../../../contexts/cart.context";
 import { Link, Outlet } from "../../../../node_modules/react-router-dom/index";
 import { useSelector } from "react-redux";
 import { selectCurrentUser } from "../../../store/user/user.selector";
+import { cartSelector } from "../../../store/cart/cart.selector";
 
 const Navigation = () => {
   const currentUser = useSelector(selectCurrentUser);
   //const { currentUser } = useContext(UserContext);
-  const { showCartDropdown } = useContext(CartConext);
+  const { showCartDropdown } = useSelector(cartSelector);
   return (
     <Fragment>
       <NavigationContainer>

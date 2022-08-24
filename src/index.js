@@ -6,7 +6,7 @@ import App from "./App";
 import reportWebVitals from "./reportWebVitals";
 import { BrowserRouter } from "react-router-dom";
 //import { CategoriesProvider } from "./contexts/categories.context";
-import { CartContextProvider } from "./contexts/cart.context";
+//import { CartContextProvider } from "./contexts/cart.context";
 import { Provider } from "react-redux/es/exports";
 import { store } from "./store/store";
 
@@ -17,9 +17,9 @@ root.render(
       <BrowserRouter>
         {/* <UserProvider> */}
         {/* <CategoriesProvider> */}
-        <CartContextProvider>
-          <App />
-        </CartContextProvider>
+        {/* <CartContextProvider> */}
+        <App />
+        {/* </CartContextProvider> */}
         {/* </CategoriesProvider> */}
         {/* </UserProvider> */}
       </BrowserRouter>
