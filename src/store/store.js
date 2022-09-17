@@ -8,13 +8,18 @@ import { rootReducer } from "./root-reducer";
 const middleWares = [process.env.NODE_ENV === "development" && logger].filter(
   Boolean
 );
+const composeEnhancer =
+  (process.env.NODE_ENV !== "production" &&
+    window &&
+    window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__) ||
+  compose;
 const persistConfig = {
   key: "root",
   storage,
   blacklist: ["user"],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-const composeEnhancer = compose(applyMiddleware(...middleWares));
+const composeEnhancers = composeEnhancer(applyMiddleware(...middleWares));
 
-export const store = createStore(persistedReducer, undefined, composeEnhancer);
+export const store = createStore(persistedReducer, undefined, composeEnhancers);
 export const persistor = persistStore(store);
