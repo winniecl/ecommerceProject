@@ -1,0 +1,14 @@
+version: "3.9"
+services:
+  app:
+    build:
+      context: .
+    volumes:
+      - .:/ecommerceProject
+    ports:
+      - 3000:3000
+    image: app:ecommerce-docker
+    container_name: ecommerceContainer
+    command: npm start
+#docker-compose build
+#docker-compose up
