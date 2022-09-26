@@ -1,7 +1,7 @@
 import "./checkout.styles.scss";
-import CheckoutItem from "../../checkout-item/checkout-item.component";
+import CheckoutItem from "../../components/checkout-item/checkout-item.component";
 import { useSelector } from "react-redux";
-import { cartSelector } from "../../../store/cart/cart.selector";
+import { cartSelector } from "../../store/cart/cart.selector";
 
 const Checkout = () => {
   const { cartItems, cartTotal } = useSelector(cartSelector);

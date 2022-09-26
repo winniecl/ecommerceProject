@@ -1,5 +1,9 @@
 import { createSelector } from "reselect";
-const selectCategoriesArray = (state) => state.categories.categories;
+const selectCatagoriesReducer = (state) => state.categories;
+export const selectCategoriesArray = createSelector(
+  [selectCatagoriesReducer],
+  (categoriesSlice) => categoriesSlice.categories
+);
 export const selectCatagories = createSelector(
   [selectCategoriesArray],
   (categories) => {
@@ -9,4 +13,8 @@ export const selectCatagories = createSelector(
       return accumulator;
     }, {});
   }
+);
+export const selectCatagoriesIsLoading = createSelector(
+  [selectCatagoriesReducer],
+  (categoriesSlice) => categoriesSlice.isLoading
 );

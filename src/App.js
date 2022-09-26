@@ -1,8 +1,8 @@
-import Home from "./components/route/home/home.components";
-import Navigation from "./components/route/navigation/navigation.components";
-import Authentication from "./components/route/authentication/authentication.component";
-import Shop from "./components/route/shop/shop-data.component";
-import Checkout from "./components/route/checkout/checkout.component";
+import Home from "./route/home/home.components";
+import Navigation from "./route/navigation/navigation.components";
+import Authentication from "./route/authentication/authentication.component";
+import Shop from "./route/shop/shop.component";
+import Checkout from "./route/checkout/checkout.component";
 import { Route, Routes } from "../node_modules/react-router-dom/index";
 import { useEffect } from "react";
 import {
@@ -11,9 +11,6 @@ import {
 } from "./utils/firebase/firebase.utils";
 import { useDispatch } from "react-redux/es/exports";
 import { setCurrentUser } from "./store/user/user.action";
-import { getCategoriesAndDocuments } from "./utils/firebase/firebase.utils";
-import { CATEGORIES_ACTION_TYPE } from "./store/categories/categories.type";
-import { setCategories } from "./store/categories/categories.action";
 
 function App() {
   const dispatch = useDispatch();
@@ -26,14 +23,6 @@ function App() {
       dispatch(setCurrentUser(user));
     });
     return unsubscribe;
-  }, []);
-  useEffect(() => {
-    const getCategoriesMap = async () => {
-      const categories = await getCategoriesAndDocuments();
-      dispatch(setCategories(categories));
-      //console.log(categories);
-    };
-    return getCategoriesMap;
   }, []);
 
   return (
